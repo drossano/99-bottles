@@ -389,3 +389,17 @@ class BottlesTest < Minitest::Test
     assert_equal expected, Bottles.new.song
   end
 end
+
+class BottleNumberTest < MiniTest::Test
+  def test_returns_given_class_for_given_number
+    # 0, 1, 6 are special
+    assert_equal BottleNumber0, BottleNumber.for(0).class
+    assert_equal BottleNumber1, BottleNumber.for(1).class
+    assert_equal BottleNumber6, BottleNumber.for(6).class
+
+    # Other numbers get the default
+    assert_equal BottleNumber, BottleNumber.for(3).class
+    assert_equal BottleNumber, BottleNumber.for(44).class
+    assert_equal BottleNumber, BottleNumber.for(99).class
+  end
+end
